@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Input\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mathematics\Mathematics.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Oyster.IntX">
+      <HintPath>..\Mathematics\Libs\IntX\Oyster.IntX.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
