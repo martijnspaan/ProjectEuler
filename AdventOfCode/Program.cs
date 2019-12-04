@@ -13,7 +13,7 @@ namespace AdventOfCode
             foreach (Type day in Assembly.GetEntryAssembly().GetTypes()
                 .Where(x => x.Name.StartsWith("Part") && !x.Namespace.EndsWith("99"))
                 .OrderByDescending(x => int.Parse(x.Namespace.Replace("AdventOfCode.Problems.Day", string.Empty)))
-                .ThenBy(x => int.Parse(x.Name.Replace("Part", string.Empty))))
+                .ThenByDescending(x => int.Parse(x.Name.Replace("Part", string.Empty))))
             {
                 Console.WriteLine("=======================================");
                 Console.WriteLine(day.Namespace + "." + day.Name);
@@ -22,12 +22,15 @@ namespace AdventOfCode
                 // Solve exercise
                 timer.Start();
                 object solution = day.InvokeMember("Solve", BindingFlags.InvokeMethod, null, null, null);
-                timer.Stop();
+                timer.Stop();                
 
                 // Show solution
                 Console.WriteLine("Solution: " + solution);
                 Console.WriteLine("Duration: " + timer.DurationFormatted);
                 Console.WriteLine();
+
+                if ((int)solution == 0) continue;
+
                 Console.ReadKey();
                 Console.WriteLine();
             }
