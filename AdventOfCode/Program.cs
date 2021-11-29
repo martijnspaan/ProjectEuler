@@ -1,5 +1,4 @@
 ﻿using Mathematics.Common;
-using Oyster.Math;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -12,8 +11,8 @@ namespace AdventOfCode
         {
             HiPerfTimer timer = new HiPerfTimer();
             foreach (Type day in Assembly.GetEntryAssembly().GetTypes()
-                .Where(x => x.Name.StartsWith("Part") && !x.Namespace.EndsWith("99") && x.Namespace.Contains("2020"))
-                .OrderByDescending(x => int.Parse(x.Namespace.Replace("AdventOfCode.Year2020.Day", string.Empty)))
+                .Where(x => x.Name.StartsWith("Part") && !x.Namespace.EndsWith("99") && x.Namespace.Contains("2021"))
+                .OrderByDescending(x => int.Parse(x.Namespace.Replace("AdventOfCode.Year2021.Day", string.Empty)))
                 .ThenByDescending(x => int.Parse(x.Name.Replace("Part", string.Empty))))
             {
                 Console.WriteLine("=======================================");
