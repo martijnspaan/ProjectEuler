@@ -6,7 +6,9 @@ namespace AdventOfCode.Year2021.Day99
     {
         public static object Solve()
         {
-            return 0;
+            int result = 0;
+
+            return result;
         }
     }
     
@@ -14,7 +16,9 @@ namespace AdventOfCode.Year2021.Day99
     {
         public static object Solve()
         {
-            return 0;
+            int result = 0;
+
+            return result;
         }
     }
 }

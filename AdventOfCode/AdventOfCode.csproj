@@ -31,4 +31,10 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Year2021\Input\Day2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
