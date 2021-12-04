@@ -5,10 +5,10 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Input\**" />
-    <EmbeddedResource Remove="Input\**" />
-    <None Remove="Input\**" />
+  <ItemGroup>
+    <Compile Remove="Input\**" />
+    <EmbeddedResource Remove="Input\**" />
+    <None Remove="Input\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,16 +21,23 @@
     </Reference>
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Year2021\Input\Day1.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Year2021\Input\Day3.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Year2021\Input\Day2.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+  <ItemGroup>
+    <None Update="Year2021\Input\Day1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Year2021\Input\Day3.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Year2021\Input\Day4.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Year2021\Input\Day2.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Extensions\" />
   </ItemGroup>
 
 </Project>

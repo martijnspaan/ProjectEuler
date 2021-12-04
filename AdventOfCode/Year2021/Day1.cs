@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using AdventOfCode.Extensions;
 
 namespace AdventOfCode.Year2021.Day1
@@ -37,6 +38,17 @@ namespace AdventOfCode.Year2021.Day1
             }
 
             return largerMeasurements;
+        }
+    }
+}
+
+namespace AdventOfCode.Extensions
+{
+    public static partial class StringExtensions
+    {
+        public static int[] ToIntArray(this string[] lines)
+        {
+            return lines.Select(int.Parse).ToArray();
         }
     }
 }

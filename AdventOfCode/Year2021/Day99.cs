@@ -1,4 +1,5 @@
 ﻿using System;
+using AdventOfCode.Extensions;
 
 namespace AdventOfCode.Year2021.Day99
 {
@@ -21,4 +22,8 @@ namespace AdventOfCode.Year2021.Day99
             return result;
         }
     }
+}
+
+namespace AdventOfCode.Extensions
+{
 }
