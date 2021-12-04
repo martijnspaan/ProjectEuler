@@ -12,16 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Year2021\Input\Day1.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Year2021\Input\Day1.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Mathematics\Mathematics.csproj" />
   </ItemGroup>
 
@@ -32,6 +22,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Year2021\Input\Day1.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Year2021\Input\Day3.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Year2021\Input\Day2.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
