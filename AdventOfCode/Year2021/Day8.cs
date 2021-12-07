@@ -3,7 +3,7 @@ using AdventOfCode.Extensions;
 
 namespace AdventOfCode.Year2021
 {
-    class Day99 : IDay
+    class Day8 : IDay
     {
         public string ExampleInput => "";
 

@@ -50,5 +50,12 @@ namespace AdventOfCode.Extensions
         {
             return lines.Select(int.Parse).ToArray();
         }
+        public static int[] ToIntArray(this string line)
+        {
+            if (string.IsNullOrWhiteSpace(line))
+                return new int[0];
+
+            return line.Split(",").Select(value => int.Parse(value.Trim())).ToArray();
+        }
     }
 }
