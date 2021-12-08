@@ -43,6 +43,8 @@ namespace AdventOfCode
                 timer.Start();
                 int solutionPart1 = puzzle.SolvePart1(puzzleInput);
                 timer.Stop();
+                if (solutionPart1 > 0)
+                    TextCopy.ClipboardService.SetText(solutionPart1.ToString());
                 Console.WriteLine("Solution: " + solutionPart1);
                 Console.WriteLine("Duration: " + timer.DurationFormatted);
                 Console.WriteLine();
@@ -51,6 +53,8 @@ namespace AdventOfCode
                 timer.Start();
                 int solutionPart2 = puzzle.SolvePart2(puzzleInput);
                 timer.Stop();
+                if (solutionPart2 > 0)
+                    TextCopy.ClipboardService.SetText(solutionPart2.ToString());
                 Console.WriteLine("Solution: " + solutionPart2);
                 Console.WriteLine("Duration: " + timer.DurationFormatted);
                 Console.WriteLine();
