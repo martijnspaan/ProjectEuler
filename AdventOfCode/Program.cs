@@ -31,6 +31,7 @@ namespace AdventOfCode
                     try
                     {
                         puzzleInput = webClient.DownloadString($"https://adventofcode.com/2021/day/{puzzleDay}/input");
+                        puzzleInput = puzzleInput.Trim(' ', '\r', '\n');
                     }
                     catch
                     {
