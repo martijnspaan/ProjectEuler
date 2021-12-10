@@ -9,7 +9,7 @@ namespace AdventOfCode.Year2021
     {
         public string ExampleInput => "2199943210\n3987894921\n9856789892\n8767896789\n9899965678";
 
-        public int SolvePart1(string puzzleInput)
+        public long SolvePart1(string puzzleInput)
         {
             int[,] heightMap = puzzleInput.ToIntMatrix();
 
@@ -18,7 +18,7 @@ namespace AdventOfCode.Year2021
             return lowPoints.Select(lowPoint => lowPoint.Value).Sum() + lowPoints.Length;
         }
 
-        public int SolvePart2(string puzzleInput)
+        public long SolvePart2(string puzzleInput)
         {
             int[,] heightMap = puzzleInput.ToIntMatrix();
 

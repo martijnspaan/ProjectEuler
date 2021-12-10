@@ -7,14 +7,14 @@ namespace AdventOfCode.Year2021
     {
         public string ExampleInput => "";
 
-        public int SolvePart1(string puzzleInput)
+        public long SolvePart1(string puzzleInput)
         {
             int[] input = puzzleInput.ToIntArray();
 
             return 0;
         }
 
-        public int SolvePart2(string puzzleInput)
+        public long SolvePart2(string puzzleInput)
         {
             int[] input = puzzleInput.ToIntArray();
 

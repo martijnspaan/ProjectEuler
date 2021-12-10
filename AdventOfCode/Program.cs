@@ -41,7 +41,7 @@ namespace AdventOfCode
 
                 Console.WriteLine("Example : " + puzzle.SolvePart1(puzzle.ExampleInput));
                 timer.Start();
-                int solutionPart1 = puzzle.SolvePart1(puzzleInput);
+                long solutionPart1 = puzzle.SolvePart1(puzzleInput);
                 timer.Stop();
                 if (solutionPart1 > 0)
                     TextCopy.ClipboardService.SetText(solutionPart1.ToString());
@@ -51,7 +51,7 @@ namespace AdventOfCode
 
                 Console.WriteLine("Example : " + puzzle.SolvePart2(puzzle.ExampleInput));
                 timer.Start();
-                int solutionPart2 = puzzle.SolvePart2(puzzleInput);
+                long solutionPart2 = puzzle.SolvePart2(puzzleInput);
                 timer.Stop();
                 if (solutionPart2 > 0)
                     TextCopy.ClipboardService.SetText(solutionPart2.ToString());

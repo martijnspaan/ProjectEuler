@@ -8,7 +8,7 @@ namespace AdventOfCode.Year2021
     {
         public string ExampleInput => "16,1,2,0,4,2,7,1,2,14";
 
-        public int SolvePart1(string puzzleInput)
+        public long SolvePart1(string puzzleInput)
         {
             int[] input = puzzleInput.ToIntArray();
 
@@ -18,7 +18,7 @@ namespace AdventOfCode.Year2021
             }).Min();
         }
 
-        public int SolvePart2(string puzzleInput)
+        public long SolvePart2(string puzzleInput)
         {
             int[] input = puzzleInput.ToIntArray();
 
