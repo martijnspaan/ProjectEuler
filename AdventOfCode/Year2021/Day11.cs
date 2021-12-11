@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Linq;
 using AdventOfCode.Extensions;
 using Mathematics.Extentions;
 
@@ -10,66 +9,59 @@ namespace AdventOfCode.Year2021
     {
         public string ExampleInput => "5483143223\n2745854711\n5264556173\n6141336146\n6357385478\n4167524645\n2176841721\n6882881134\n4846848554\n5283751526";
 
+        public List<(int X, int Y)> Offsets = new()
+        {
+            (0, -1),
+            (1, -1),
+            (1, 0),
+            (1, 1),
+            (0, 1),
+            (-1, 1),
+            (-1, 0),
+            (-1, -1),
+        };
+
         public long SolvePart1(string puzzleInput)
         {
             int[,] input = puzzleInput.ToIntMatrix();
 
             long flashes = 0;
 
-            int width = input.GetLength(0);
-            int height = input.GetLength(1);
-
-            List<Point> hasFlashed = new List<Point>();
+            List<(int X, int Y)> hasFlashed = new();
 
             for (int i = 0; i < 100; i++)
             {
                 int newFlashes;
 
-                for (int y = 0; y < height; y++)
-                {
-                    for (int x = 0; x < width; x++)
-                    {
-                        input[x, y]++;
-                    }
-                }
+                input.Positions().ForEach(pos => { input[pos.X, pos.Y]++; });
 
                 do
                 {
                     newFlashes = 0;
 
-                    for (int y = 0; y < height; y++)
-                    {
-                        for (int x = 0; x < width; x++)
+                    input.Positions().ForEach(pos => {
+                        if (hasFlashed.Contains(pos))
+                            return;
+
+                        if (input.At(pos) > 9)
                         {
-                            if (hasFlashed.Contains(new Point(x, y)))
-                                continue;
-                            
-                            if (input[x, y] > 9)
-                            {
-                                newFlashes++;
-                                hasFlashed.Add(new Point(x, y));
+                            newFlashes++;
+                            hasFlashed.Add(pos);
 
-                                if (x > 0) input[x - 1, y]++; // left
-                                if (x < width-1) input[x + 1, y]++; // right
-                                if (y > 0) input[x, y - 1]++; // up
-                                if (y < height - 1) input[x, y + 1]++; // down
-
-                                if (x > 0 && y > 0) input[x - 1, y - 1]++; // left-up
-                                if (x < width - 1 && y > 0) input[x + 1, y - 1]++; // right-up
-                                if (x > 0 && y < height - 1) input[x - 1, y + 1]++; // left-down
-                                if (x < width - 1 && y < height - 1) input[x + 1, y + 1]++; // right-down
-                            }
+                            Offsets.Select(offset => (X: pos.X + offset.X, Y: pos.Y + offset.Y))
+                                .Where(pos => input.Includes(pos))
+                                .ForEach(pos => input[pos.X, pos.Y]++);
                         }
-                    }
+                    });
 
                 } while (newFlashes != 0);
 
-                foreach (var point in hasFlashed)
+                foreach (var pos in hasFlashed)
                 {
-                    input[point.X, point.Y] = 0;
+                    input.Set(pos, 0);
                 }
                 flashes += hasFlashed.Count;
-                hasFlashed = new List<Point>();
+                hasFlashed = new();
             }
 
             return flashes;
@@ -81,63 +73,44 @@ namespace AdventOfCode.Year2021
 
             long flashes = 0;
 
-            int width = input.GetLength(0);
-            int height = input.GetLength(1);
-
-            List<Point> hasFlashed = new List<Point>();
+            List<(int X, int Y)> hasFlashed = new ();
 
             for (int i = 1; i < 1000; i++)
             {
                 int newFlashes;
 
-                for (int y = 0; y < height; y++)
-                {
-                    for (int x = 0; x < width; x++)
-                    {
-                        input[x, y]++;
-                    }
-                }
+                input.Positions().ForEach(pos => { input[pos.X, pos.Y]++; });
 
                 do
                 {
                     newFlashes = 0;
 
-                    for (int y = 0; y < height; y++)
-                    {
-                        for (int x = 0; x < width; x++)
+                    input.Positions().ForEach(pos => {
+                        if (hasFlashed.Contains(pos))
+                            return;
+
+                        if (input.At(pos) > 9)
                         {
-                            if (hasFlashed.Contains(new Point(x, y)))
-                                continue;
+                            newFlashes++;
+                            hasFlashed.Add(pos);
 
-                            if (input[x, y] > 9)
-                            {
-                                newFlashes++;
-                                hasFlashed.Add(new Point(x, y));
-
-                                if (x > 0) input[x - 1, y]++; // left
-                                if (x < width - 1) input[x + 1, y]++; // right
-                                if (y > 0) input[x, y - 1]++; // up
-                                if (y < height - 1) input[x, y + 1]++; // down
-
-                                if (x > 0 && y > 0) input[x - 1, y - 1]++; // left-up
-                                if (x < width - 1 && y > 0) input[x + 1, y - 1]++; // right-up
-                                if (x > 0 && y < height - 1) input[x - 1, y + 1]++; // left-down
-                                if (x < width - 1 && y < height - 1) input[x + 1, y + 1]++; // right-down
-                            }
+                            Offsets.Select(offset => (X: pos.X + offset.X, Y: pos.Y + offset.Y))
+                                .Where(pos => input.Includes(pos))
+                                .ForEach(pos => input[pos.X, pos.Y]++);
                         }
-                    }
+                    });
 
                 } while (newFlashes != 0);
 
                 if (hasFlashed.Count == 100)
                     return i;
 
-                foreach (var point in hasFlashed)
+                foreach (var pos in hasFlashed)
                 {
-                    input[point.X, point.Y] = 0;
+                    input.Set(pos, 0);
                 }
                 flashes += hasFlashed.Count;
-                hasFlashed = new List<Point>();
+                hasFlashed = new();
             }
 
             return flashes;
@@ -147,4 +120,38 @@ namespace AdventOfCode.Year2021
 
 namespace AdventOfCode.Extensions
 {
+    public static partial class MultiDimensionalArrayExtensions
+    {
+        public static bool Includes<T>(this T[,] matrix, (int X, int Y) position)
+        {
+            int width = matrix.GetLength(0);
+            int height = matrix.GetLength(1);
+
+            return position.X >= 0 && position.X < width && position.Y >= 0 && position.Y < height;
+        }
+
+        public static IEnumerable<(int X, int Y)> Positions<T>(this T[,] matrix)
+        {
+            int width = matrix.GetLength(0);
+            int height = matrix.GetLength(1);
+
+            for (int y = 0; y < height; y++)
+            {
+                for (int x = 0; x < width; x++)
+                {
+                    yield return (x, y);
+                }
+            }
+        }
+
+        public static T At<T>(this T[,] matrix, (int X, int Y) position)
+        {
+            return matrix[position.X, position.Y];
+        }
+
+        public static void Set<T>(this T[,] matrix, (int X, int Y) position, T value)
+        {
+            matrix[position.X, position.Y] = value;
+        }
+    }
 }
