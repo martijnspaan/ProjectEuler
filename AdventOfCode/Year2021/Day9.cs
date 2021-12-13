@@ -53,7 +53,7 @@ namespace AdventOfCode.Extensions
 
     public record LowPoint(int X, int Y, int Value);
 
-    public static partial class MultiDimensionalArrayExtensions
+    public static partial class MultiDimensionArrayExtensions
     {
         public static IEnumerable<LowPoint> GetLowPoints(this int[,] heightMap)
         {

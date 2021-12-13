@@ -120,7 +120,7 @@ namespace AdventOfCode.Year2021
 
 namespace AdventOfCode.Extensions
 {
-    public static partial class MultiDimensionalArrayExtensions
+    public static partial class MultiDimensionArrayExtensions
     {
         public static bool Includes<T>(this T[,] matrix, (int X, int Y) position)
         {
