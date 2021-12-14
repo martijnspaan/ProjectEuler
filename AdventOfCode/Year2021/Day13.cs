@@ -115,7 +115,7 @@ namespace AdventOfCode.Extensions
             {
                 for (int x = 0; x < width; x++)
                 {
-                    Console.Write(matrix[x, y] > 0 ? '#' : '.');
+                    Console.Write(matrix[x, y] > 0 ? '#' : ' ');
                 }
                 Console.WriteLine();
             }
