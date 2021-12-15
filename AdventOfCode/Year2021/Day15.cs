@@ -56,27 +56,17 @@ namespace AdventOfCode.Extensions
 
             matrix[0, 0] = 0;
 
-            // Init x = 0 and y = 0 lines
-            for (int y = 1; y < height; y++)
+            for (int v = 0; v < width; v++) // Iterate vertices
             {
-                matrix[0, y] += matrix[0, y - 1];
-            }
-            for (int x = 1; x < width; x++)
-            {
-                matrix[x, 0] += matrix[x - 1, 0];
-            }
-
-            // Iterate rest of the matrix with x > 0 and y > 0
-            for (int i = 1; i < width; i++)
-            {
-                for (int y = i; y < height; y++)
+                for (int y = v; y < height; y++) // Iterate each vertical from vertex
                 {
-                    matrix[i, y] += Math.Min(matrix[i, y - 1], matrix[i - 1, y]);
+                    if (y > 0) // skip (0,0)
+                        matrix[v, y] += v == 0 ? matrix[v, y - 1] : Math.Min(matrix[v, y - 1], matrix[v - 1, y]); // increase with lowest neighbor above or left
                 }
 
-                for (int x = i + 1; x < width; x++)
+                for (int x = v + 1; x < width; x++) // Iterate each horizontal from vertex (skip first, handled vertically)
                 {
-                    matrix[x, i] += Math.Min(matrix[x - 1, i], matrix[x, i - 1]);
+                    matrix[x, v] += v == 0 ? matrix[x - 1, v] : Math.Min(matrix[x - 1, v], matrix[x, v - 1]); // increase with lowest neighbor above or left
                 }
             }
 
